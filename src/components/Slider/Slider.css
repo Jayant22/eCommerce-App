@@ -1,0 +1,89 @@
+.s_container {
+  position: relative;
+  top: 2rem;
+}
+
+.s_container .swiper {
+  width: 80%;
+  height: 12rem;
+  position: unset;
+}
+
+.s_container .swiper-slide {
+  background: white;
+  display: flex;
+  border-radius: 10px;
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+
+.s_container .swiper-button-prev {
+  left: 6rem;
+  color: black;
+}
+
+.s_container .swiper-button-next {
+  right: 6rem;
+  color: black;
+}
+
+.left_s {
+  width: min-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+}
+
+.name > :nth-child(1) {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.name > :nth-child(2) {
+  font-size: 0.6rem;
+}
+
+.name > :nth-child(3) {
+  font-size: 0.7rem;
+  color: red;
+  font-weight: 500;
+}
+
+.left_s > :nth-child(2) {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.left_s > :nth-child(3) {
+  font-size: 0.9rem;
+  border: 1px solid var(--black);
+  padding: 5px 10px;
+  width: max-content;
+  border-radius: 15px;
+}
+
+.img-p {
+  position: absolute;
+  right: 0;
+  width: 60%;
+  height: 100%;
+  top: 0;
+}
+
+@media screen and (max-width: 856px) {
+  .s_container .swiper {
+    width: 90%;
+    height: 10rem;
+  }
+  .s_container .swiper-button-next,
+  .s_container .swiper-button-prev {
+    display: none;
+  }
+}

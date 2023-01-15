@@ -1,0 +1,11 @@
+.container {
+  position: relative;
+  top: 2rem;
+}
+
+.container .swiper {
+  width: 70%;
+  height: 12rem;
+  position: unset;
+}
+
