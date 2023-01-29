@@ -1,11 +1,18 @@
+import React, { Suspense } from 'react';
+
 import classes from './Hero.module.css';
 import ProductImage from '../../assets/iphone.png';
 import { RiShoppingBagFill } from 'react-icons/ri';
 import { BsArrowRight } from 'react-icons/bs';
 import { motion } from 'framer-motion';
 
+const Spline = React.lazy(() => import('@splinetool/react-spline'));
+
 const Hero = () => {
   const transition = { duration: 3, type: 'spring' };
+
+  // const [showSpline, setShowSpline] = React.useState(false);
+
   return (
     <div className={classes.container}>
       <div className={classes.h_sides}>
@@ -24,14 +31,20 @@ const Hero = () => {
           className={classes.hero_circle}
         ></motion.div>
 
-        <motion.img
-          initial={{ bottom: '2rem' }}
-          whileInView={{ bottom: '0rem' }}
-          transition={transition}
-          src={ProductImage}
-          alt='Product Image'
-          width={600}
-        />
+        <Suspense
+          fallback={
+            <motion.img
+              initial={{ bottom: '2rem' }}
+              whileInView={{ bottom: '0rem' }}
+              transition={transition}
+              src={ProductImage}
+              alt='Product Image'
+              width={600}
+            />
+          }
+        >
+          <Spline scene='https://prod.spline.design/sRAe40tRaJqA3y-N/scene.splinecode' />
+        </Suspense>
 
         <motion.div
           initial={{ right: '4%' }}

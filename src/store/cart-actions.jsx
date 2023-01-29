@@ -5,7 +5,7 @@ export const fetchCartData = () => {
   return async (dispatch) => {
     const fetchData = async () => {
       const response = await fetch(
-        'https://react--http-f960e-default-rtdb.asia-southeast1.firebasedatabase.app/cart.json'
+        'https://ecommerce-app-2aa98-default-rtdb.asia-southeast1.firebasedatabase.app/cart.json'
       );
 
       if (!response.ok) {
@@ -17,7 +17,6 @@ export const fetchCartData = () => {
     };
     try {
       const cartData = await fetchData();
-      console.log(cartData);
       dispatch(
         cartActions.replaceCart({
           items: cartData.items || [],
@@ -48,11 +47,8 @@ export const sendCartData = (cart) => {
     );
 
     const sendRequest = async () => {
-      console.log('====================================');
-      console.log(cart);
-      console.log('====================================');
       const response = await fetch(
-        'https://react--http-f960e-default-rtdb.asia-southeast1.firebasedatabase.app/cart.json',
+        'https://ecommerce-app-2aa98-default-rtdb.asia-southeast1.firebasedatabase.app/cart.json',
         {
           method: 'PUT',
           body: JSON.stringify({

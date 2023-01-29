@@ -21,7 +21,7 @@ const Cart = (props) => {
 
   const submitOrderHandler = async (orderData) => {
     sendTaskRequest({
-      url: 'https://react--http-f960e-default-rtdb.asia-southeast1.firebasedatabase.app/orders.json',
+      url: 'https://ecommerce-app-2aa98-default-rtdb.asia-southeast1.firebasedatabase.app/orders.json',
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: {

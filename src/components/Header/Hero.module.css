@@ -11,13 +11,16 @@
   position: relative;
 }
 
+/* Setting the width, height, position, opacity, and transform of the image. */
 .wrapper > img {
   width: 20rem;
   height: 30rem;
   position: absolute;
   bottom: 0;
   opacity: 90%;
+  transform: scale();
 }
+
 
 .hero_circle {
   width: 30rem;
