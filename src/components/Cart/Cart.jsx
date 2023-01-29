@@ -7,6 +7,7 @@ import CheckOut from './CheckOut';
 import useFetch from './../../hooks/useFetch';
 import { cartActions } from '../../store/cart-slice';
 import { uiActions } from '../../store/ui-slice';
+import { url } from '../../store/cart-actions';
 import Modal from './../UI/Modal';
 
 const Cart = (props) => {
@@ -21,7 +22,7 @@ const Cart = (props) => {
 
   const submitOrderHandler = async (orderData) => {
     sendTaskRequest({
-      url: 'https://ecommerce-app-2aa98-default-rtdb.asia-southeast1.firebasedatabase.app/orders.json',
+      url: `${url}orders.json`,
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: {
@@ -62,10 +63,7 @@ const Cart = (props) => {
 
   const modalActions = (
     <div className={classes.actions}>
-      <button
-        className={classes['button--alt']}
-        onClick={toggleCartHandler}
-      >
+      <button className={classes['button--alt']} onClick={toggleCartHandler}>
         Close
       </button>
       {hasItems && (
@@ -84,10 +82,7 @@ const Cart = (props) => {
         <span>{totalAmount} $</span>
       </div>
       {isCheckout && (
-        <CheckOut
-          onSubmit={submitOrderHandler}
-          onCancel={toggleCartHandler}
-        />
+        <CheckOut onSubmit={submitOrderHandler} onCancel={toggleCartHandler} />
       )}
       {!isCheckout && modalActions}
     </React.Fragment>
@@ -105,7 +100,7 @@ const Cart = (props) => {
   );
 
   return (
-    <Modal onClose = {toggleCartHandler}>
+    <Modal onClose={toggleCartHandler}>
       {!isLoading && !requestSubmitted && cartModalContent}
       {isLoading && requestSubmitted && <p>Sending order data...</p>}
       {!isLoading && requestSubmitted && didSubmitModalContent}

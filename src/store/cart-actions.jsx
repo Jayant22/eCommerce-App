@@ -1,11 +1,13 @@
 import { uiActions } from './ui-slice';
 import { cartActions } from './cart-slice';
+export const url =
+  'https://react-project-5c4ab-default-rtdb.asia-southeast1.firebasedatabase.app/';
 
 export const fetchCartData = () => {
   return async (dispatch) => {
     const fetchData = async () => {
       const response = await fetch(
-        'https://ecommerce-app-2aa98-default-rtdb.asia-southeast1.firebasedatabase.app/cart.json'
+        `${url}cart.json`
       );
 
       if (!response.ok) {
@@ -47,17 +49,14 @@ export const sendCartData = (cart) => {
     );
 
     const sendRequest = async () => {
-      const response = await fetch(
-        'https://ecommerce-app-2aa98-default-rtdb.asia-southeast1.firebasedatabase.app/cart.json',
-        {
-          method: 'PUT',
-          body: JSON.stringify({
-            items: cart.items,
-            totalQuantity: cart.totalQuantity,
-            totalAmount: cart.totalAmount,
-          }),
-        }
-      );
+      const response = await fetch(`${url}cart.json`, {
+        method: 'PUT',
+        body: JSON.stringify({
+          items: cart.items,
+          totalQuantity: cart.totalQuantity,
+          totalAmount: cart.totalAmount,
+        }),
+      });
 
       if (!response.ok) {
         throw new Error('Sending cart data failed.');
